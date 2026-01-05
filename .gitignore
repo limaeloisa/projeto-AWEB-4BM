@@ -1,0 +1,7 @@
+# Ignorar venv
+.venv/
+venv/
+
+# Ignorar arquivos temporários
+__pycache__/
+*.pyc
