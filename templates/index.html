@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ANAVITÓRIA - experimental</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .bg-bege { background-color: #FFF9F0; } 
+    .bg-amarelo { background-color: #FFF3B0; }  
+    .text-cinza { color: #4B4B4B; } 
+    .btn-amarelo {
+      background-color: #FFE082;
+      color: #4B4B4B;
+      border: none;
+    }
+    .btn-amarelo:hover {
+      background-color: #FFD54F;
+      color: #3D3D3D;
+    }
+
+    /* Faz os cards ficarem do mesmo tamanho */
+    .card {
+      height: 100%;
+    }
+
+    /* Faz o botão "grudar" no final */
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card-text {
+      flex-grow: 1;
+    }
+  </style>
+</head>
+
+<body class="bg-bege text-cinza">
+
+ <nav class="bg-amarelo py-3">
+  <div class="container d-flex justify-content-start gap-3">
+    <!-- Redes sociais -->
+    <a href="https://open.spotify.com/artist/1sPg5EHuQXTMElpZ4iUgXe" target="_blank" class="text-cinza text-decoration-none d-flex align-items-center gap-1">
+      <i class="fab fa-spotify fs-4"></i>
+    </a>
+    <a href="https://www.instagram.com/anavitoria" target="_blank" class="text-cinza text-decoration-none d-flex align-items-center gap-1">
+      <i class="fab fa-instagram fs-4"></i>
+    </a>
+
+    <!-- Categorias do blog -->
+    {% for cat in categorias %}
+      <a href="/categoria/{{ cat[0] }}" class="text-cinza text-decoration-none ms-3">{{ cat[1] }}</a>
+    {% endfor %}
+  </div>
+</nav>
+
+  <!-- CONTEÚDO -->
+  <main class="container py-4">
+    <section class="text-center mb-5">
+      <h1 class="fw-bold">Conheça quem faz parte do duo ANAVITÓRIA</h1>
+      <p>Anavitória é uma dupla de música folk-pop brasileira formada em 2014 em Araguaína, Tocantins, pelas cantoras Ana Caetano e Vitória Falcão.</p>
+    </section>
+<section class="mb-5">
+  <div class="row justify-content-center g-4">
+    {% for post in posts %}
+    <article class="col-sm-6 col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        {% if post[4] %} <!-- se tiver imagem -->
+        <img class="card-img-top" src="{{ post[4] }}" alt="{{ post[1] }}">
+        {% endif %}
+        <div class="card-body">
+          <div>
+            <h5 class="card-title">{{ post[1] }} <span class="badge bg-secondary">{{ post[7] }}</span></h5>
+            <p class="card-text">{{ post[3][:200] }}...</p>
+          </div>
+          <a href="/post/{{ post[0] }}" class="btn btn-amarelo mt-3">Ler mais</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+    <!-- CARROSSEL -->
+    <section class="mb-5 text-center">
+      <h2 class="mb-4">Álbuns de Estúdio Mais Famosos</h2>
+      <div id="albumCarousel" class="carousel slide mx-auto" style="max-width: 500px;" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <img src="https://i.scdn.co/image/ab67616d0000b273190aaad879fd91cebab37efd" class="d-block w-100 rounded" alt="ESQUINAS">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>ESQUINAS</h5>
+              <p>Ensaio fotográfico da turnê ESQUINAS, quarto álbum da dupla.</p>
+              <a href="https://open.spotify.com/album/2DVwOWSHjIm1L6pOm0EGIl" class="btn btn-amarelo btn-sm" target="_blank">Ouça Agora</a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://i.scdn.co/image/ab67616d0000b2735d7cf1a8508aa994d4bde5c8" class="d-block w-100 rounded" alt="O Tempo é Agora">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>O TEMPO É AGORA</h5>
+              <p>Segundo álbum de estúdio da dupla pela gravadora Universal.</p>
+              <a href="https://open.spotify.com/album/0yiQu0POzXcfjEB6qBuhtj" class="btn btn-amarelo btn-sm" target="_blank">Ouça Agora</a>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <img src="https://i.scdn.co/image/ab67616d0000b273b1e8a9fa2c21159ea637b766" class="d-block w-100 rounded" alt="COR">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>COR</h5>
+              <p>Quarto álbum de estúdio da dupla, lançado em 2021 pela gravadora F/Simas.</p>
+              <a href="https://open.spotify.com/album/43Q8jiKg8whuFnVCwA1xOC" class="btn btn-amarelo btn-sm" target="_blank">Ouça Agora</a>
+            </div>
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#albumCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#albumCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="bg-amarelo text-center p-3 mt-4">
+    <small class="text-cinza">Site experimental — primeiro uso do Bootstrap.</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

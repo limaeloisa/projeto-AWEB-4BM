@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="mb-5">
+  <div class="row justify-content-center g-4">
+    {% for post in posts %}
+    <article class="col-sm-6 col-md-4">
+      <div class="card border-0 shadow-sm h-100">
+        {% if post[4] %} <!-- se tiver imagem -->
+        <img class="card-img-top" src="{{ post[4] }}" alt="{{ post[1] }}">
+        {% endif %}
+        <div class="card-body">
+          <div>
+            <h5 class="card-title">{{ post[1] }} <span class="badge bg-secondary">{{ post[7] }}</span></h5>
+            <p class="card-text">{{ post[3][:200] }}...</p>
+          </div>
+          <a href="/post/{{ post[0] }}" class="btn btn-amarelo mt-3">Ler mais</a>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+</body>
+</html>
