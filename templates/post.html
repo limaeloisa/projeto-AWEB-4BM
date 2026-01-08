@@ -6,25 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <section class="mb-5">
-  <div class="row justify-content-center g-4">
-    {% for post in posts %}
-    <article class="col-sm-6 col-md-4">
-      <div class="card border-0 shadow-sm h-100">
-        {% if post[4] %} <!-- se tiver imagem -->
-        <img class="card-img-top" src="{{ post[4] }}" alt="{{ post[1] }}">
-        {% endif %}
-        <div class="card-body">
-          <div>
-            <h5 class="card-title">{{ post[1] }} <span class="badge bg-secondary">{{ post[7] }}</span></h5>
-            <p class="card-text">{{ post[3][:200] }}...</p>
-          </div>
-          <a href="/post/{{ post[0] }}" class="btn btn-amarelo mt-3">Ler mais</a>
-        </div>
-      </div>
-    </article>
-    {% endfor %}
-  </div>
-</section>
+    {% extends 'base.html' %}
+
+{% block title %}{{ post.titulo }}{% endblock %}
+
+{% block content %}
+<h1>{{ post.titulo }}</h1>
+<p class="text-muted">Publicado em {{ post.data }}</p>
+
+<img src="{{ url_for('static', filename='img/uploads/' ~ post.imagem) }}" class="img-fluid mb-4">
+
+<p>{{ post.conteudo }}</p>
+
+<a href="/" class="btn btn-secondary mt-3">Voltar</a>
+{% endblock %}
 </body>
 </html>
