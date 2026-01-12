@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Acervo MPB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-music"></i> Acervo de Letras MPB
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('nova_letra') }}">Adicionar Letra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('sobre') }}">Sobre</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="bg-white p-4 rounded mb-4">
+                        <h1 class="mb-4">Sobre Este Acervo</h1>
+                        
+                        <p class="lead text-muted">
+                            Um espaço dedicado a preservar e compartilhar as letras da Música Popular Brasileira.
+                        </p>
+
+                        <h3 class="mt-4 mb-3">O que é MPB?</h3>
+                        <p>
+                            A Música Popular Brasileira (MPB) é um gênero musical que surgiu nos anos 1960, 
+                            representando uma evolução da música brasileira. Artistas como Tom Jobim, João Gilberto, 
+                            Caetano Veloso, Gilberto Gil e Chico Buarque marcaram profundamente esta época.
+                        </p>
+
+                        <h3 class="mt-4 mb-3">Nossa Missão</h3>
+                        <p>
+                            Preservar e difundir as letras que fazem parte da história musical brasileira, 
+                            permitindo que novas gerações conheçam e apreciem as obras desses artistas incríveis.
+                        </p>
+
+                        <h3 class="mt-4 mb-3">Artistas em Destaque</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">Tom Jobim</li>
+                            <li class="list-group-item">João Gilberto</li>
+                            <li class="list-group-item">Caetano Veloso</li>
+                            <li class="list-group-item">Gilberto Gil</li>
+                            <li class="list-group-item">Chico Buarque</li>
+                            <li class="list-group-item">Elis Regina</li>
+                        </ul>
+
+                        <h3 class="mt-4 mb-3">Como Contribuir</h3>
+                        <p>
+                            Você pode contribuir adicionando novas letras ao acervo. Clique no botão 
+                            "Adicionar Letra" para compartilhar suas favoritas!
+                        </p>
+
+                        <div class="text-center mt-5">
+                            <a href="{{ url_for('index') }}" class="btn btn-primary">
+                                Voltar
+                            </a>
+                            <a href="{{ url_for('nova_letra') }}" class="btn btn-success">
+                                Adicionar Letra
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 mt-5">
+        <div class="container">
+            <p class="mb-2">
+                <i class="fas fa-copyright"></i> 2026 Acervo de Letras de MPB
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
