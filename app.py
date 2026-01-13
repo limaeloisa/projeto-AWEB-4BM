@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from mysql.connector import connect, Error
+from flask import Flask, render_template, request, flash, redirect, url_for
+import mysql.connector
+from mysql.connector import Error
 
 app = Flask(__name__)
 
 # Conectar ao banco de dados
 def conectar_bd():
     try:
-        cnx = connect(
+        cnx = mysql.connector.connect(
             user='root',
             password='1406',
             host='127.0.0.1',
@@ -21,112 +22,92 @@ def conectar_bd():
 @app.route('/')
 def index():
     cnx = conectar_bd()
-    letras = []
+    posts = []
     if cnx:
-        cursor = cnx.cursor(dictionary=True)  # <-- importante
-        cursor.execute("SELECT * FROM letras ORDER BY data_criacao DESC")
-        letras = cursor.fetchall()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM posts WHERE ativo = TRUE ORDER BY criado_em DESC")
+        posts = cursor.fetchall()
         cursor.close()
         cnx.close()
-    return render_template('index.html', letras=letras)
+    return render_template('index.html', posts=posts)
 
-# Adicionar letra
-@app.route('/letra/nova')
-def nova_letra():
-    return render_template('nova_letra.html')
-
-@app.route('/salvar-letra', methods=['POST'])
-def salvar_letra():
-    titulo = request.form['titulo']
-    artista = request.form['artista']
-    letra = request.form['letra']
-    
+# Detalhes do post
+@app.route('/post/<slug>')
+def detalhe(slug):
     cnx = conectar_bd()
+    post = None
     if cnx:
-        cursor = cnx.cursor()
-        cursor.execute(
-            "INSERT INTO letras (titulo, artista, letra) VALUES (%s, %s, %s)",
-            (titulo, artista, letra)
-        )
-        cnx.commit()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE p.slug = %s AND p.ativo = TRUE", (slug,))
+        post = cursor.fetchone()
         cursor.close()
         cnx.close()
-        flash('Letra adicionada!', 'success')
-        return redirect(url_for('index'))
     
-    flash('Erro ao adicionar', 'danger')
-    return redirect(url_for('nova_letra'))
+    if not post:
+        return render_template('404.html'), 404
+    
+    return render_template('detalhe.html', post=post)
 
-# Ver letra
-@app.route('/letra/<int:id>')
-def ver_letra(id):
+# Páginas por categoria
+@app.route('/historia')
+def historia():
     cnx = conectar_bd()
-    letra = None
+    posts = []
     if cnx:
-        cursor = cnx.cursor()
-        cursor.execute("SELECT * FROM letras WHERE id = %s", (id,))
-        letra = cursor.fetchone()
-        cursor.execute("UPDATE letras SET visualizacoes = visualizacoes + 1 WHERE id = %s", (id,))
-        cnx.commit()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'história' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
+        posts = cursor.fetchall()
         cursor.close()
         cnx.close()
-    
-    if not letra:
-        return "Letra não encontrada", 404
-    
-    return render_template('ver_letra.html', letra=letra)
+    return render_template('historia.html', posts=posts, titulo='História')
 
-# Editar letra
-@app.route('/letra/<int:id>/editar')
-def editar_letra(id):
+@app.route('/lendas')
+def lendas():
     cnx = conectar_bd()
-    letra = None
+    posts = []
     if cnx:
-        cursor = cnx.cursor()
-        cursor.execute("SELECT * FROM letras WHERE id = %s", (id,))
-        letra = cursor.fetchone()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'lendas' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
+        posts = cursor.fetchall()
         cursor.close()
         cnx.close()
-    
-    if not letra:
-        return "Letra não encontrada", 404
-    
-    return render_template('editar_letra.html', letra=letra)
+    return render_template('lendas.html', posts=posts, titulo='Lendas')
 
-@app.route('/atualizar-letra/<int:id>', methods=['POST'])
-def atualizar_letra(id):
-    titulo = request.form['titulo']
-    artista = request.form['artista']
-    letra = request.form['letra']
-    
+@app.route('/turismo')
+def turismo():
     cnx = conectar_bd()
+    posts = []
     if cnx:
-        cursor = cnx.cursor()
-        cursor.execute(
-            "UPDATE letras SET titulo = %s, artista = %s, letra = %s WHERE id = %s",
-            (titulo, artista, letra, id)
-        )
-        cnx.commit()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'turismo' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
+        posts = cursor.fetchall()
         cursor.close()
         cnx.close()
-        flash('Letra atualizada!', 'success')
-        return redirect(url_for('ver_letra', id=id))
-    
-    return redirect(url_for('editar_letra', id=id))
+    return render_template('turismo.html', posts=posts, titulo='Turismo')
 
-# Deletar letra
-@app.route('/letra/<int:id>/deletar', methods=['POST'])
-def deletar_letra(id):
+@app.route('/cultura')
+def cultura():
     cnx = conectar_bd()
+    posts = []
     if cnx:
-        cursor = cnx.cursor()
-        cursor.execute("DELETE FROM letras WHERE id = %s", (id,))
-        cnx.commit()
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'cultura' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
+        posts = cursor.fetchall()
         cursor.close()
         cnx.close()
-        flash('Letra deletada!', 'success')
-    
-    return redirect(url_for('index'))
+    return render_template('cultura.html', posts=posts, titulo='Cultura')
+
+@app.route('/pau-brasil')
+def pau_brasil():
+    cnx = conectar_bd()
+    posts = []
+    if cnx:
+        cursor = cnx.cursor(dictionary=True)
+        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'pau-brasil' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
+        posts = cursor.fetchall()
+        cursor.close()
+        cnx.close()
+    return render_template('pau-brasil.html', posts=posts, titulo='Pau Brasil')
 
 # Sobre
 @app.route('/sobre')

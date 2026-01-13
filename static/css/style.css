@@ -1,11 +1,11 @@
 /* ==================== VARIÁVEIS ====================*/
 :root {
-    --primary-color: #8B4513;      /* Tom marrom (madeira, violão) */
-    --secondary-color: #555;
+    --primary-color: #0a7ea4;
+    --secondary-color: #2e7d32;
     --success-color: #28a745;
     --danger-color: #dc3545;
-    --accent-color: #D4A574;       /* Bege acobreado */
-    --dark-color: #2C2C2C;
+    --accent-color: #0a7ea4;
+    --dark-color: #1f3a3a;
     --light-color: #f5f5f5;
 }
 
@@ -17,11 +17,11 @@
 }
 
 html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fafaf8;
     color: #333;
     line-height: 1.6;
@@ -29,74 +29,222 @@ body {
 
 /* ==================== NAVBAR ====================*/
 .navbar {
-    border-bottom: 2px solid var(--primary-color);
-    background-color: var(--dark-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: 1px;
-    color: var(--accent-color) !important;
 }
 
 .navbar-nav .nav-link {
-    color: #ccc !important;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     transition: color 0.3s;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    color: var(--accent-color) !important;
+    color: #fff !important;
+    border-bottom: 2px solid #fff;
 }
 
 /* ==================== HERO SECTION ====================*/
 .hero-section {
-    background: linear-gradient(to bottom, #2C2C2C, #3a3a3a);
-    color: var(--accent-color);
-    padding: 3rem 0;
+    background: linear-gradient(135deg, #0a7ea4 0%, #1e9bb8 100%);
+    color: white;
+    padding: 4rem 0;
     text-align: center;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 3px solid #2e7d32;
 }
 
 .hero-section h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-section .lead {
-    font-size: 1.1rem;
-    color: #bbb;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #0a7ea4 0%, #1e9bb8 100%);
 }
 
 /* ==================== CARDS ====================*/
 .blog-card {
-    transition: box-shadow 0.3s;
-    border-left: 3px solid var(--primary-color);
+    transition: all 0.3s ease;
+    border: none;
+    border-left: 4px solid #0a7ea4;
     background: white;
     margin-bottom: 2rem;
+    overflow: hidden;
 }
 
 .blog-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(10, 126, 164, 0.15);
+    transform: translateY(-2px);
 }
 
 .blog-card .card-title {
-    color: var(--primary-color);
+    color: #0a7ea4;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
 
 .blog-card .card-title a {
-    color: var(--primary-color);
+    color: #0a7ea4;
     text-decoration: none;
+    transition: color 0.3s;
 }
 
 .blog-card .card-title a:hover {
-    text-decoration: underline;
+    color: #2e7d32;
+}
+
+.blog-card .card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.post-meta {
+    font-size: 0.9rem;
+}
+
+/* ==================== BADGES ====================*/
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* ==================== BUTTONS ====================*/
+.btn-primary {
+    background-color: #0a7ea4;
+    border-color: #0a7ea4;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #085a7d;
+    border-color: #085a7d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(10, 126, 164, 0.3);
+}
+
+.btn-outline-primary {
+    color: #0a7ea4;
+    border-color: #0a7ea4;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0a7ea4;
+    border-color: #0a7ea4;
+}
+
+/* ==================== SIDEBAR ====================*/
+.list-group-item.active {
+    background-color: #0a7ea4;
+    border-color: #0a7ea4;
+}
+
+.list-group-item-action:hover {
+    background-color: #f0f8fc;
+}
+
+/* ==================== ARTICLE CONTENT ====================*/
+.article-content {
+    line-height: 1.8;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+    color: #0a7ea4;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.article-content p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.article-content ul,
+.article-content ol {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.article-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* ==================== FOOTER ====================*/
+footer {
+    background-color: #1f3a3a;
+    color: white;
+    border-top: 3px solid #0a7ea4;
+    margin-top: 4rem;
+}
+
+footer p {
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: #0a7ea4;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #2e7d32;
+}
+
+/* ==================== RESPONSIVE ====================*/
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .blog-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* ==================== UTILITY CLASSES ====================*/
+.sticky-top {
+    z-index: 999;
+}
+
+.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
 }
 
 .blog-card .card-text {

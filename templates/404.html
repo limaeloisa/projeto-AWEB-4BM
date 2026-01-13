@@ -3,31 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página não encontrada - Acervo MPB</title>
+    <title>Página Não Encontrada - Pureza</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container-lg">
-            <a class="navbar-brand fw-bold" href="{{ url_for('index') }}">
-                <i class="fas fa-music"></i> Acervo de Letras MPB
-            </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/"><i class="fas fa-droplet"></i> Pureza</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">
-                            <i class="fas fa-home"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('nova_letra') }}">
-                            <i class="fas fa-plus"></i> Adicionar Letra
+                    <li class="nav-item"><a class="nav-link" href="/historia">História</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/lendas">Lendas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/turismo">Turismo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pau-brasil">Pau Brasil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cultura">Cultura</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/sobre">Sobre</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+        <div class="text-center">
+            <div style="font-size: 6rem; color: #0a7ea4; margin-bottom: 2rem;">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h1 class="display-1 fw-bold text-primary mb-3">404</h1>
+            <h2 class="h3 mb-3 text-dark">Página Não Encontrada</h2>
+            <p class="lead text-muted mb-4">
+                Oops! As águas por aqui estão turvas... <br>
+                A página que você procura não existe em Pureza.
+            </p>
+            <div class="btn-group" role="group">
+                <a href="/" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home"></i> Voltar ao Início
+                </a>
+                <a href="/sobre" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-info-circle"></i> Sobre
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h6><i class="fas fa-droplet text-info"></i> Pureza</h6>
+                    <p class="text-muted small">Um tesouro de águas cristalinas</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li><a href="/sobre" class="text-reset text-decoration-none">Sobre</a></li>
+                        <li><a href="/historia" class="text-reset text-decoration-none">História</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Redes Sociais</h6>
+                    <a href="#" class="text-info me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-info me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-info"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <hr class="border-secondary mt-4 mb-3">
+            <p class="text-center text-muted mb-0 small">&copy; 2024 Pureza. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
+                <i class="fas fa-water"></i> Pureza - Águas Cristalinas
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section" style="padding: 10rem 0;">
+        <div class="container text-center">
+            <div style="font-size: 6rem; margin-bottom: 1rem;">
+                <i class="fas fa-triangle-exclamation" style="color: #80deea;"></i>
+            </div>
+            <h1 style="font-size: 4rem; margin-bottom: 1rem;">404</h1>
+            <p class="lead" style="font-size: 1.5rem; margin-bottom: 2rem;">
+                Oops! Página Não Encontrada
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; color: #b3e5fc;">
+                Parece que você chegou a uma página que não existe. As águas aqui estão turvas!
+            </p>
+            
+            <div class="mt-5">
+                <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
+                    <i class="fas fa-home"></i> Voltar ao Início
+                </a>
+                <a href="{{ url_for('sobre') }}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-info-circle"></i> Sobre Pureza
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-5 mt-5">
+        <div class="container">
+            <p class="mb-2">
+                <i class="fas fa-copyright"></i> 2026 Pureza - Turismo e Lendas das Águas Cristalinas
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -62,8 +161,8 @@
                             <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg">
                                 <i class="fas fa-home"></i> Voltar para Home
                             </a>
-                            <a href="{{ url_for('nova_letra') }}" class="btn btn-outline-secondary btn-lg">
-                                <i class="fas fa-plus"></i> Adicionar Letra
+                            <a href="{{ url_for('sobre') }}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-info-circle"></i> Sobre
                             </a>
                         </div>
                     </div>

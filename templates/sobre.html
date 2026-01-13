@@ -3,101 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - Acervo MPB</title>
+    <title>Sobre - Pureza</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">
-                <i class="fas fa-music"></i> Acervo de Letras MPB
-            </a>
+            <a class="navbar-brand fw-bold" href="/"><i class="fas fa-droplet"></i> Pureza</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('index') }}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('nova_letra') }}">Adicionar Letra</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url_for('sobre') }}">Sobre</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/historia">História</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/lendas">Lendas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/turismo">Turismo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pau-brasil">Pau Brasil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cultura">Cultura</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/sobre">Sobre</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="py-4">
+    <div class="bg-primary text-white py-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3"><i class="fas fa-info-circle"></i> Sobre Este Projeto</h1>
+            <p class="lead">Conhecendo Pureza: História, Lendas e Belezas Naturais</p>
+        </div>
+    </div>
+
+    <section class="py-5">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="bg-white p-4 rounded mb-4">
-                        <h1 class="mb-4">Sobre Este Acervo</h1>
-                        
-                        <p class="lead text-muted">
-                            Um espaço dedicado a preservar e compartilhar as letras da Música Popular Brasileira.
-                        </p>
+                <div class="col-lg-8">
+                    <h2 class="mb-4 fw-bold text-primary">Bem-vindo ao Portal de Pureza</h2>
+                    
+                    <p class="text-muted lead">
+                        Este site é um portal dedicado a compartilhar a rica história, fascinantes lendas e impressionantes belezas naturais de Pureza - um município que é, de fato, um tesouro de águas cristalinas.
+                    </p>
 
-                        <h3 class="mt-4 mb-3">O que é MPB?</h3>
-                        <p>
-                            A Música Popular Brasileira (MPB) é um gênero musical que surgiu nos anos 1960, 
-                            representando uma evolução da música brasileira. Artistas como Tom Jobim, João Gilberto, 
-                            Caetano Veloso, Gilberto Gil e Chico Buarque marcaram profundamente esta época.
-                        </p>
+                    <h3 class="mt-5 mb-3 text-success">Nossa Missão</h3>
+                    <p class="text-muted">
+                        Preservar e divulgar o patrimônio cultural, histórico e natural de Pureza para as gerações presentes e futuras. Queremos que todos conheçam e apreciem a beleza singular desta região.
+                    </p>
 
-                        <h3 class="mt-4 mb-3">Nossa Missão</h3>
-                        <p>
-                            Preservar e difundir as letras que fazem parte da história musical brasileira, 
-                            permitindo que novas gerações conheçam e apreciem as obras desses artistas incríveis.
-                        </p>
+                    <h3 class="mt-5 mb-3 text-success">O Que Você Encontra Aqui</h3>
+                    <div class="row g-4 my-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary"><i class="fas fa-book"></i> História</h5>
+                                    <p class="card-text text-muted">
+                                        Conheça os marcos importantes que moldaram Pureza, desde seus primeiros habitantes até os dias de hoje.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-success"><i class="fas fa-moon"></i> Lendas</h5>
+                                    <p class="card-text text-muted">
+                                        Mergulhe nas histórias místicas e mágicas que cercam Pureza desde tempos imemoriais.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-info"><i class="fas fa-mountain"></i> Turismo</h5>
+                                    <p class="card-text text-muted">
+                                        Descubra os lugares mais belos e imperdíveis para visitar em Pureza.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-light h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title text-warning"><i class="fas fa-palette"></i> Cultura</h5>
+                                    <p class="card-text text-muted">
+                                        Explore as tradições, artes e costumes que definem a identidade de Pureza.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <h3 class="mt-4 mb-3">Artistas em Destaque</h3>
-                        <ul class="list-group">
-                            <li class="list-group-item">Tom Jobim</li>
-                            <li class="list-group-item">João Gilberto</li>
-                            <li class="list-group-item">Caetano Veloso</li>
-                            <li class="list-group-item">Gilberto Gil</li>
-                            <li class="list-group-item">Chico Buarque</li>
-                            <li class="list-group-item">Elis Regina</li>
-                        </ul>
+                    <h3 class="mt-5 mb-3 text-success">Águas Cristalinas - O Coração de Pureza</h3>
+                    <p class="text-muted">
+                        Pureza é conhecida em todo o mundo pelas suas águas cristalinas. Estas águas não são apenas belas, mas são o coração pulsante da região, sustentando a vida, alimentando lendas e atraindo visitantes de todos os cantos do planeta. A transparência das águas permite uma conexão única com a natureza.
+                    </p>
 
-                        <h3 class="mt-4 mb-3">Como Contribuir</h3>
-                        <p>
-                            Você pode contribuir adicionando novas letras ao acervo. Clique no botão 
-                            "Adicionar Letra" para compartilhar suas favoritas!
-                        </p>
+                    <h3 class="mt-5 mb-3 text-success">Um Compromisso com a Preservação</h3>
+                    <p class="text-muted">
+                        Acreditamos que conhecer é amar, e amar é proteger. Ao compartilhar as histórias de Pureza, esperamos inspirar as pessoas a valorizar e preservar este patrimônio singular para as próximas gerações.
+                    </p>
 
-                        <div class="text-center mt-5">
-                            <a href="{{ url_for('index') }}" class="btn btn-primary">
-                                Voltar
-                            </a>
-                            <a href="{{ url_for('nova_letra') }}" class="btn btn-success">
-                                Adicionar Letra
-                            </a>
+                    <div class="alert alert-info mt-4" role="alert">
+                        <i class="fas fa-star"></i> <strong>Obrigado</strong> por visitar nosso portal e se interessar pela riqueza de Pureza!
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm mb-4">
+                        <div class="card-body text-center">
+                            <div style="font-size: 4rem; color: #0a7ea4; margin-bottom: 1rem;">
+                                <i class="fas fa-water"></i>
+                            </div>
+                            <h5 class="card-title">Pureza</h5>
+                            <p class="card-text text-muted small">
+                                Um Tesouro de Águas Cristalinas
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-sm border-success border-2">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><i class="fas fa-star"></i> Destaques</h5>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <a href="/historia" class="text-decoration-none">→ Primeiros Habitantes</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="/pau-brasil" class="text-decoration-none">→ Era do Pau Brasil</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="/lendas" class="text-decoration-none">→ Lendas Místicas</a>
+                                </li>
+                                <li class="mb-2">
+                                    <a href="/turismo" class="text-decoration-none">→ Lugares Incríveis</a>
+                                </li>
+                                <li>
+                                    <a href="/cultura" class="text-decoration-none">→ Cultura Viva</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
+    <footer class="bg-dark text-white py-4 mt-5">
         <div class="container">
-            <p class="mb-2">
-                <i class="fas fa-copyright"></i> 2026 Acervo de Letras de MPB
-            </p>
+            <div class="row">
+                <div class="col-md-4">
+                    <h6>Pureza</h6>
+                    <p class="text-muted small">Um tesouro de águas cristalinas</p>
+                </div>
+                <div class="col-md-4">
+                    <h6>Links Rápidos</h6>
+                    <ul class="list-unstyled text-muted small">
+                        <li><a href="/sobre" class="text-reset text-decoration-none">Sobre</a></li>
+                        <li><a href="/historia" class="text-reset text-decoration-none">História</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6>Redes Sociais</h6>
+                    <a href="#" class="text-info me-3">Facebook</a>
+                    <a href="#" class="text-info me-3">Twitter</a>
+                    <a href="#" class="text-info">Instagram</a>
+                </div>
+            </div>
+            <hr class="border-secondary mt-4 mb-3">
+            <p class="text-center text-muted mb-0 small">&copy; 2024 Pureza. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
