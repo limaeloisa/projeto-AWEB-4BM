@@ -85,30 +85,6 @@ def turismo():
         cnx.close()
     return render_template('turismo.html', posts=posts, titulo='Turismo')
 
-@app.route('/cultura')
-def cultura():
-    cnx = conectar_bd()
-    posts = []
-    if cnx:
-        cursor = cnx.cursor(dictionary=True)
-        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'cultura' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
-        posts = cursor.fetchall()
-        cursor.close()
-        cnx.close()
-    return render_template('cultura.html', posts=posts, titulo='Cultura')
-
-@app.route('/pau-brasil')
-def pau_brasil():
-    cnx = conectar_bd()
-    posts = []
-    if cnx:
-        cursor = cnx.cursor(dictionary=True)
-        cursor.execute("SELECT p.*, c.nome as categoria FROM posts p LEFT JOIN categorias c ON p.categoria_id = c.id WHERE c.nome = 'pau-brasil' AND p.ativo = TRUE ORDER BY p.criado_em DESC", ())
-        posts = cursor.fetchall()
-        cursor.close()
-        cnx.close()
-    return render_template('pau-brasil.html', posts=posts, titulo='Pau Brasil')
-
 # Sobre
 @app.route('/sobre')
 def sobre():

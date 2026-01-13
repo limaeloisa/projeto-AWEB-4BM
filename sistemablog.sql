@@ -55,8 +55,6 @@ INSERT INTO categorias (nome, descricao, icone, cor) VALUES
 ('história', 'História e origem de Pureza', '📚', '#0a7ea4'),
 ('lendas', 'Lendas e mitos locais', '⭐', '#2e7d32'),
 ('turismo', 'Pontos turísticos e destinos', '🏔️', '#0277bd'),
-('cultura', 'Cultura e tradições', '🎨', '#f57f17'),
-('pau-brasil', 'História do Pau Brasil', '🌳', '#00897b'),
 ('causos', 'Causos e histórias populares', '😄', '#ff6f00');
 
 -- ===================================================
@@ -100,14 +98,6 @@ INSERT INTO posts (titulo, slug, descricao, conteudo, imagem, categoria_id, auto
     '<h2>A Bandeira Municipal de Pureza</h2><p>A bandeira municipal de Pureza é composta por um retângulo branco, sobre o qual se destaca uma cruz azul que se entrecruza ao centro, tendo ao fundo a imagem do brasão do município. O conjunto simbólico remete à fé cristã e presta homenagem à Nossa Senhora da Pureza, padroeira do município.</p><h3>Processo de Criação</h3><p>Em ofício encaminhado ao então prefeito em exercício, Sr. João da Fonseca Moura Neto, no dia 05 de dezembro de 2005, a Sra. Anadite Fernandes da Silva, responsável pela execução do Projeto de Criação das Bandeiras no Rio Grande do Norte, propôs uma alteração no brasão da nova bandeira, a qual foi acatada.</p><h3>Aprovação Legislativa</h3><p>O Projeto de Lei foi protocolado na Câmara Municipal em 08 de março de 2006, votado em 15 de março de 2006 e aprovado por unanimidade pelos vereadores: José Bezerra de Araújo (Presidente da Câmara), Maria do Socorro Varela de Araújo, Magnus Kelly Gabriel de Assis, Isaías dos Santos, Maria Gomes de Oliveira Brito, Raimundo Alves de Oliveira, José Barbosa, João da Silveira Damasceno e José Lindauro Xavier.</p><p>Dessa forma, foi instituído o Projeto de Lei nº 227/06, de 15 de março de 2006, que oficializou a criação do novo Brasão e da Bandeira do Município de Pureza.</p>',
     'https://via.placeholder.com/600x400?text=Bandeira+Pureza',
     1, 1, TRUE
-),
-(
-    'A Era do Pau Brasil',
-    'pau-brasil',
-    'O ciclo econômico que moldou Pureza',
-    '<h2>O Ciclo do Pau Brasil</h2><p>Durante os séculos XVI e XVII, a extração de pau brasil foi a principal atividade econômica. As florestas de Pureza foram exploradas, deixando marcas na paisagem e na cultura local.</p><h3>Importância Econômica</h3><p>O pau brasil era ouro vermelho. Exportado para a Europa, sua madeira vermelha era usada para tingimento de tecidos de luxo. Isso atraiu jesuítas, bandeirantes e comerciantes.</p><h3>Impacto Ambiental</h3><p>A exploração intensiva devastou as florestas originais. Apenas pequenas parcelas de floresta com pau brasil sobrevivem hoje em dia, protegidas por leis ambientais.</p><h3>Legado Cultural</h3><p>O pau brasil deixou uma marca profunda na identidade de Pureza. Nomes de ruas, festas e tradições ainda fazem referência a esse período histórico importante.</p>',
-    'https://via.placeholder.com/600x400?text=Pau+Brasil',
-    5, 1, TRUE
 );
 
 
@@ -202,35 +192,6 @@ INSERT INTO posts (titulo, slug, descricao, conteudo, imagem, categoria_id, auto
     3, 1, TRUE
 );
 
-
--- ===================================================
--- INSERIR CULTURA
--- ===================================================
-INSERT INTO posts (titulo, slug, descricao, conteudo, imagem, categoria_id, autor_id, ativo) VALUES
-(
-    'Festas Populares',
-    'festas-populares',
-    'Celebrações tradicionais que animam Pureza',
-    '<h2>Festas da Comunidade</h2><p>Pureza tem um calendário rico de festas populares que animam o município. Desde festas religiosas até celebrações folclóricas, há sempre algo acontecendo.</p><h3>Festa de São João</h3><p>Realizada em junho com comidas típicas, danças e fogueira. A festa atrai visitantes de toda região com suas tradições nordestinas.</p><h3>Festa da Água Cristalina</h3><p>Anual em setembro, celebra as águas que tornam Pureza especial. Inclui competições aquáticas, desfiles e shows culturais.</p><h3>Carnaval</h3><p>Pequeno mas vibrante, com blocos temáticos e festa social. A comunidade se reúne para celebrar com música e dança.</p>',
-    'https://via.placeholder.com/600x400?text=Festas',
-    4, 1, TRUE
-),
-(
-    'Artesanato Local',
-    'artesanato-local',
-    'Criações e tradições de artesãos purezenses',
-    '<h2>Arte e Criatividade</h2><p>Os artesãos de Pureza criam obras primas usando materiais locais. De cerâmica a tecelagem, cada peça conta uma história.</p><h3>Cerâmica</h3><p>Feita com barro da região, as peças refletem motivos da natureza. Potes, tigelas e objetos decorativos são vendidos em lojas locais.</p><h3>Tecelagem</h3><p>Mulheres tecem fios formando tapetes, bolsas e roupas com padrões tradicionais. Cada peça é única e criada à mão.</p><h3>Trabalhos em Madeira</h3><p>Artesãos trabalham madeira de demolição criando móveis rústicos e objetos decorativos. Uma forma de preservar a história enquanto cria algo novo.</p>',
-    'https://via.placeholder.com/600x400?text=Artesanato',
-    4, 1, TRUE
-),
-(
-    'Gastronomia de Pureza',
-    'gastronomia',
-    'Sabores autênticos da culinária local',
-    '<h2>Comida do Coração</h2><p>A cozinha de Pureza é resultado da mistura de tradições indígenas, coloniais e atuais. Frutos do mar e produtos da terra convertem em pratos memoráveis.</p><h3>Prato Típico: Moqueca de Peixe</h3><p>Preparada com peixe fresco das águas locais, leite de coco, dendê e temperos. Servida em panela de barro, é irresistível.</p><h3>Doces Tradicionais</h3><p>Paçoca de amendoim, bolo de coco e cocada com gosto da vovó. Feitos em pequena escala mantêm a autenticidade.</p><h3>Bebidas</h3><p>Suco de fruta natural, água fresca de coco e um café da manhã reforçado completam a experiência gastronômica.</p>',
-    'https://via.placeholder.com/600x400?text=Gastronomia',
-    4, 1, TRUE
-);
 
 -- ===================================================
 -- INSERIR CAUSOS (HISTÓRIAS POPULARES)
