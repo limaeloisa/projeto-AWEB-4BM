@@ -9,8 +9,8 @@ def conectar_bd():
     try:
         cnx = mysql.connector.connect(
             user='root',
-            password='1406',
-            host='127.0.0.1',
+            password='2301',
+            host='127.0.0.1:500',
             database='sistemablog'
         )
         return cnx
