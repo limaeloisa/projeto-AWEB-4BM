@@ -22,7 +22,7 @@
                 <a href="{{ url_for('detalhe', legenda=legend['titulo'].lower().split()[0].replace('(', '').replace(')', '').replace('\'', '').replace('í', 'i').replace('é', 'e').replace('ã', 'a').replace('ç', 'c')) }}" class="btn btn-outline-primary">Ler mais</a>
                 {% else %}
                 <a href="{{ url_for('detalhe', legenda=legend['titulo'].lower().split()[0].replace('(', '').replace(')', '').replace('\'', '').replace('í', 'i').replace('é', 'e').replace('ã', 'a').replace('ç', 'c')) }}" class="btn btn-outline-primary">Ler mais</a>
-                <a href="{{ url_for('delete', id=legend['id']) }}" class="btn btn-outline-danger ms-2" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir</a>
+                <a href="{{ url_for('excluir', id=legend['id']) }}" class="btn btn-outline-danger ms-2" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir</a>
                 {% endif %}
             </div>
         </div>

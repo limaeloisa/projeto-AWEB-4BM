@@ -9,7 +9,7 @@
 <p>{{ legend['content'] }}</p>
 <p><strong>Autor:</strong> {{ legend['author'] }}</p>
 <p><strong>Data:</strong> {{ legend['date'] }}</p>
-<a href="{{ url_for('delete', id=legend['id']) }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir Lenda</a>
+<a href="{{ url_for('excluir', id=legend['id']) }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir Lenda</a>
 {% else %}
 <h2>Lenda Não Encontrada</h2>
 <p>A lenda solicitada não foi encontrada.</p>

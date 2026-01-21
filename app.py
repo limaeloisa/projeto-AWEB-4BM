@@ -4,109 +4,117 @@ import mysql.connector
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = 'static/uploads'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-def get_db():
-    return mysql.connector.connect(
+app.config['FOLDER_UPLOADS'] = os.path.join(app.root_path, 'static', 'uploads')
+def executar_sql(sql, params=None, um=False, todos=False):
+    conexao = mysql.connector.connect(
         host='localhost',
         user='root',
         password='1406',
         database='sistemablog'
     )
 
-def init_db():
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute('''CREATE TABLE IF NOT EXISTS posts (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        title TEXT,
-        content TEXT,
-        author TEXT,
-        date TEXT,
-        image TEXT
-    )''')
-    conn.commit()
-    cursor.close()
-    conn.close()
+    cursor = conexao.cursor(dictionary=True)
+    cursor.execute(sql, params or ())
 
-init_db()
+    resultado = None
+    if um:
+        resultado = cursor.fetchone()
+    elif todos:
+        resultado = cursor.fetchall()
+
+    conexao.commit()
+    cursor.close()
+    conexao.close()
+
+    return resultado
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
 @app.route('/lendas')
 def lendas():
-    conn = get_db()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT id, title as titulo, content as conteudo, author as autor, date as data_publicacao, image as imagem FROM posts ORDER BY date DESC')
-    user_legends = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return render_template('lendas.html', user_legends=user_legends)
+    lendas_usuario = executar_sql(
+        """SELECT id, title AS titulo, content AS conteudo,
+                  author AS autor, date AS data_publicacao, image AS imagem
+           FROM posts ORDER BY date DESC""",
+        todos=True
+    )
+    return render_template('lendas.html', user_legends=lendas_usuario)
+
 
 @app.route('/detalhe/<legenda>')
 def detalhe(legenda):
-    conn = get_db()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT * FROM posts WHERE title LIKE %s', ('%' + legenda + '%',))
-    legend = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    if legend:
-        return render_template('detalhe.html', legenda=legenda, legend=legend)
-    else:
+    lenda = executar_sql(
+        'SELECT * FROM posts WHERE title LIKE %s',
+        ('%' + legenda + '%',),
+        um=True
+    )
+
+    if not lenda:
         return render_template('404.html'), 404
 
+    return render_template('detalhe.html', legenda=legenda, legend=lenda)
+
+
 @app.route('/add', methods=['GET', 'POST'])
-def add():
+def adicionar():
     if request.method == 'POST':
-        title = request.form['titulo']
-        content = request.form['conteudo']
-        author = request.form['autor']
-        date = request.form['data_publicacao']
-        image = request.files.get('imagem')
-        image_filename = None
-        if image and image.filename:
-            image_filename = image.filename
-            image.save(os.path.join(app.config['UPLOAD_FOLDER'], image_filename))
-        conn = get_db()
-        cursor = conn.cursor()
-        # Verificar se já existe uma lenda com o mesmo título
-        cursor.execute('SELECT id FROM posts WHERE title = %s', (title,))
-        existing_legend = cursor.fetchone()
-        if existing_legend:
-            cursor.close()
-            conn.close()
-            return render_template('add.html', error='Uma lenda com este título já existe.')
-        cursor.execute('INSERT INTO posts (title, content, author, date, image) VALUES (%s, %s, %s, %s, %s)',
-                       (title, content, author, date, image_filename))
-        conn.commit()
-        cursor.close()
-        conn.close()
+        titulo = request.form['titulo']
+        conteudo = request.form['conteudo']
+        autor = request.form['autor']
+        data_publicacao = request.form['data_publicacao']
+        imagem = request.files.get('imagem')
+
+        nome_imagem = None
+        if imagem and imagem.filename:
+            nome_imagem = imagem.filename
+            imagem.save(os.path.join(app.config['FOLDER_UPLOADS'], nome_imagem))
+
+        existente = executar_sql(
+            'SELECT id FROM posts WHERE title = %s',
+            (titulo,),
+            um=True
+        )
+
+        if existente:
+            return render_template(
+                'add.html',
+                error='Uma lenda com este título já existe.'
+            )
+
+        executar_sql(
+            'INSERT INTO posts (title, content, author, date, image) VALUES (%s, %s, %s, %s, %s)',
+            (titulo, conteudo, autor, data_publicacao, nome_imagem)
+        )
+
         return redirect(url_for('lendas'))
+
     return render_template('add.html')
 
+
 @app.route('/delete/<int:id>')
-def delete(id):
-    conn = get_db()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute('SELECT image FROM posts WHERE id = %s', (id,))
-    legend = cursor.fetchone()
-    if legend and legend['image'] and not legend['image'].startswith('http'):
-        image_path = os.path.join(app.config['UPLOAD_FOLDER'], legend['image'])
-        if os.path.exists(image_path):
-            os.remove(image_path)
-    cursor.execute('DELETE FROM posts WHERE id = %s', (id,))
-    conn.commit()
-    cursor.close()
-    conn.close()
+def excluir(id):
+    lenda = executar_sql(
+        'SELECT image FROM posts WHERE id = %s',
+        (id,),
+        um=True
+    )
+
+    if lenda and lenda['image'] and not lenda['image'].startswith('http'):
+        caminho = os.path.join(app.config['FOLDER_UPLOADS'], lenda['image'])
+        if os.path.exists(caminho):
+            os.remove(caminho)
+
+    executar_sql('DELETE FROM posts WHERE id = %s', (id,))
     return redirect(url_for('lendas'))
 
+
 @app.errorhandler(404)
-def page_not_found(e):
+def pagina_nao_encontrada(e):
     return render_template('404.html'), 404
+
 
 if __name__ == '__main__':
     app.run(debug=True)
