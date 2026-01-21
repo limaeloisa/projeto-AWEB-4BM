@@ -70,10 +70,28 @@
                     
 
                     {% else %}
-                        <p>Fogo do Batatão:</p>
-                        <p>O Fogo do Batatão é uma bola de fogo misteriosa que aparecia na mata quando alguém fazia algum mal a natureza, assustando moradores rurais</p>
-                        <p>Sereia/Mãe D´Agua:</p>
-                        <p>É uma figura mística que fica em cima da pedra do olheiro, e com seu canto atrai homens para a nascente. As pessoas mais velhas falavam, que quando passavam pela fonte de madrugada, escutavam um canto na fonte e se sentiam atraídos por esse canto.</p>
+                         <!-- historia do fogo do batatao  -->
+                        <p class="fw-bold">Fogo do Batatão:</p>                    
+                         <img 
+                           src="{{ url_for('static', filename='img/bola1.png') }}"
+                           alt="Bola"
+                           class="lenda-img">
+                           <p class="fw-bold">Ilustração criada por inteligência artificial</p>
+                           <p>O Fogo do Batatão é uma bola de fogo misteriosa que aparecia na mata quando alguém fazia algum mal a natureza, assustando moradores rurais</p>
+
+                        <!-- historia da sereia  -->
+                        <p class="fw-bold">Sereia/Mãe D´Agua:</p>
+                           <img 
+                           src="{{ url_for('static', filename='img/sereia.jpg') }}"
+                           alt="Sereia"
+                           class="lenda-img">
+                           <p class="fw-bold">Arte de: Rafael Limaverde</p>
+                        <p>É uma figura mística que fica em cima da pedra do olheiro, e 
+                           com seu canto atrai homens para a nascente. As pessoas mais velhas falavam, que 
+                           quando passavam pela fonte de madrugada, escutavam um canto na fonte e se 
+                           sentiam atraídos por esse canto.</p>
+                      
+                        <!-- historia do lobisomen -->
                         <p class="fw-bold">O Segredo das Noites de Lua Cheia em Pureza:</p>
                           <img 
                            src="{{ url_for('static', filename='img/lobisomem.jpg') }}"
