@@ -3,27 +3,45 @@
 {% block content %}
 <h2>Lendas Brasileiras</h2>
 <p class="text-muted">Explore as histórias míticas do folclore brasileiro.</p>
+
 <div class="row">
     {% for legend in user_legends %}
     <div class="col-md-4 mb-4">
         <div class="card h-100">
+
             {% if legend['imagem'] %}
-            {% if legend['imagem'].startswith('http') %}
-            <img src="{{ legend['imagem'] }}" class="card-img-top" alt="{{ legend['titulo'] }}">
-            {% else %}
-            <img src="{{ url_for('static', filename='uploads/' + legend['imagem']) }}" class="card-img-top" alt="{{ legend['titulo'] }}">
+                {% if legend['imagem'].startswith('http') %}
+                    <img src="{{ legend['imagem'] }}" class="card-img-top" alt="{{ legend['titulo'] }}">
+                {% else %}
+                    <img src="{{ url_for('static', filename='uploads/' + legend['imagem']) }}"
+                         class="card-img-top" alt="{{ legend['titulo'] }}">
+                {% endif %}
             {% endif %}
-            {% endif %}
+
             <div class="card-body">
                 <h5 class="card-title">{{ legend['titulo'] }}</h5>
-                <p class="card-text">{{ legend['conteudo'][:100] }}...</p>
-                <p class="text-muted small">Por {{ legend['autor'] }} em {{ legend['data_publicacao'] }}</p>
-                {% if legend['autor'] == 'Folclore Brasileiro' %}
-                <a href="{{ url_for('detalhe', legenda=legend['titulo'].lower().split()[0].replace('(', '').replace(')', '').replace('\'', '').replace('í', 'i').replace('é', 'e').replace('ã', 'a').replace('ç', 'c')) }}" class="btn btn-outline-primary">Ler mais</a>
-                {% else %}
-                <a href="{{ url_for('detalhe', legenda=legend['titulo'].lower().split()[0].replace('(', '').replace(')', '').replace('\'', '').replace('í', 'i').replace('é', 'e').replace('ã', 'a').replace('ç', 'c')) }}" class="btn btn-outline-primary">Ler mais</a>
-                <a href="{{ url_for('excluir', id=legend['id']) }}" class="btn btn-outline-danger ms-2" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir</a>
+
+                <p class="card-text">
+                    {{ legend['conteudo'][:100] }}...
+                </p>
+
+                <p class="text-muted small">
+                    Por {{ legend['autor'] }} em {{ legend['data_publicacao'] }}
+                </p>
+
+                <a href="{{ url_for('detalhe', legenda=legend['id']) }}"
+                   class="btn btn-outline-primary">
+                   Ler mais
+                </a>
+
+                {% if session.get('usuario_id') %}
+                <a href="{{ url_for('excluir', id=legend['id']) }}"
+                   class="btn btn-outline-danger ms-2"
+                   onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">
+                   Excluir
+                </a>
                 {% endif %}
+
             </div>
         </div>
     </div>

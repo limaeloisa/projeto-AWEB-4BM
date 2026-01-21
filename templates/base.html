@@ -11,11 +11,20 @@
     <header class="bg-light text-dark p-3 border-bottom">
         <div class="container">
             <h1 class="h4">Portal das Lendas Brasileiras</h1>
-            <nav>
-                <a href="{{ url_for('index') }}" class="text-decoration-none me-3">Início</a>
-                <a href="{{ url_for('lendas') }}" class="text-decoration-none me-3">Lendas</a>
-                <a href="{{ url_for('adicionar') }}" class="text-decoration-none">Adicionar Lenda</a>
-            </nav>
+<nav>
+    <a href="{{ url_for('index') }}" class="text-decoration-none me-3">Início</a>
+    <a href="{{ url_for('lendas') }}" class="text-decoration-none me-3">Lendas</a>
+
+    {% if session.get('usuario_id') %}
+        <a href="{{ url_for('adicionar') }}" class="text-decoration-none me-3">Adicionar Lenda</a>
+        <span class="me-2">Olá, {{ session['usuario_nome'] }}</span>
+        <a href="{{ url_for('logout') }}" class="text-decoration-none text-danger">Sair</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="text-decoration-none me-3">Login</a>
+        <a href="{{ url_for('cadastro') }}" class="text-decoration-none">Cadastro</a>
+    {% endif %}
+</nav>
+
         </div>
     </header>
     <main class="container my-4">
