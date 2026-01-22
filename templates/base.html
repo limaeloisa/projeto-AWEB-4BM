@@ -81,10 +81,14 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="bg-light text-muted p-3 text-center border-top mt-auto">
-    <p>&copy; 2026 Blog com Lendas Brasileiras. Todos os direitos reservados.</p>
+<footer class="text-center mt-auto">
+    <p>&copy; 2026 Lendas Que o Tempo Contou</p>
+    <p class="small">
+        <a href="{{ url_for('sobre') }}" class="text-decoration-none text-light">
+            Sobre o blog
+        </a>
+    </p>
 </footer>
-
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>

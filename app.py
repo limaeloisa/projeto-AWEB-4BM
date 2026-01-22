@@ -40,13 +40,31 @@ def sobre():
 
 @app.route('/lendas')
 def lendas():
-    lendas_usuario = executar_sql(
-        """SELECT id, title AS titulo, content AS conteudo,
-                  author AS autor, date AS data_publicacao, image AS imagem
-           FROM posts ORDER BY date DESC""",
-        todos=True
-    )
+    termo = request.args.get('q', '')  # pega o termo de busca do formulário
+
+    if termo:
+        # filtra pelo título contendo o termo
+        sql = """
+            SELECT id, title AS titulo, content AS conteudo,
+                   author AS autor, date AS data_publicacao, image AS imagem
+            FROM posts
+            WHERE title LIKE %s
+            ORDER BY date DESC
+        """
+        params = ('%' + termo + '%',)
+        lendas_usuario = executar_sql(sql, params=params, todos=True)
+    else:
+        # sem filtro: mostra todas
+        sql = """
+            SELECT id, title AS titulo, content AS conteudo,
+                   author AS autor, date AS data_publicacao, image AS imagem
+            FROM posts
+            ORDER BY date DESC
+        """
+        lendas_usuario = executar_sql(sql, todos=True)
+
     return render_template('lendas.html', user_legends=lendas_usuario)
+
 
 
 @app.route('/detalhe/<int:legenda>')

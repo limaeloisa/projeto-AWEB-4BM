@@ -4,6 +4,12 @@
 <h2>Lendas Brasileiras</h2>
 <p class="text-muted">Explore as histórias míticas do folclore brasileiro.</p>
 
+<!-- FORMULÁRIO DE BUSCA -->
+<form method="GET" action="{{ url_for('lendas') }}" class="d-flex mb-3">
+    <input type="text" name="q" class="form-control me-2" placeholder="Buscar por nome da lenda" value="{{ request.args.get('q', '') }}">
+    <button type="submit" class="btn btn-purple">Buscar</button>
+</form>
+
 <div class="row">
     {% for legend in user_legends %}
     <div class="col-md-4 mb-4">
@@ -45,6 +51,7 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <p>Nenhuma lenda encontrada.</p>
     {% endfor %}
-</div>
-{% endblock %}
+    {% endblock %}
