@@ -39,9 +39,16 @@
                 </button>
             </div>
         </form>
-
+        <div class="text-center mt-3">
+            <small class="text-muted">
+                Ainda não tem uma conta?
+                <a href="{{ url_for('cadastro') }}"
+                   class="fw-bold text-decoration-none text-purple">
+                    Criar uma conta
+                </a>
+            </small>
+        </div>
     </div>
-
 </div>
 {% endblock %}
 
