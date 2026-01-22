@@ -1,23 +1,47 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h2>Login</h2>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 
-{% if erro %}
-<div class="alert alert-danger">{{ erro }}</div>
-{% endif %}
+    <div class="card shadow-lg p-4"
+         style="width: 100%; max-width: 400px;
+                background-color: rgba(255,255,255,0.88);
+                border-radius: 15px;">
 
-<form method="post">
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" required>
+        <h3 class="text-center fw-bold mb-3 text-dark">Login</h3>
+        <p class="text-center text-muted mb-4">Acesse sua conta</p>
+
+        {% if erro %}
+        <div class="alert alert-danger text-center">
+            {{ erro }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email"
+                       class="form-control"
+                       placeholder="Digite seu email"
+                       required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Senha</label>
+                <input type="password" name="senha"
+                       class="form-control"
+                       placeholder="Digite sua senha"
+                       required>
+            </div>
+
+            <div class="d-grid mt-4">
+                <button class="btn btn-purple btn-lg">
+                    Entrar
+                </button>
+            </div>
+        </form>
+
     </div>
 
-    <div class="mb-3">
-        <label>Senha</label>
-        <input type="password" name="senha" class="form-control" required>
-    </div>
-
-    <button class="btn btn-primary">Entrar</button>
-</form>
+</div>
 {% endblock %}
+
