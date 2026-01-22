@@ -45,8 +45,9 @@ header nav a:hover {
 }
 
 footer {
-    background-color: #000000;
-    color: #fafdff;
+    background: linear-gradient(135deg, #c14ae29d, #462d90);
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .lenda-img {
@@ -64,4 +65,58 @@ footer {
 .lenda-img:hover {
     filter: grayscale(0%);
     transform: scale(1.02);
+}
+
+/* HERO SECTION */
+.hero {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(70, 45, 144, 0.7),
+        rgba(193, 74, 226, 0.6)
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    padding: 2rem;
+    color: #ffffff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-hero {
+    background: linear-gradient(135deg, #c14ae2, #462d90);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    color: #fff;
 }
