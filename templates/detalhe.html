@@ -2,17 +2,39 @@
 
 {% block content %}
 {% if legend %}
-<h2>{{ legend['title'] }}</h2>
-{% if legend['image'] %}
-<img src="{% if legend['image'].startswith('http') %}{{ legend['image'] }}{% else %}{{ url_for('static', filename='uploads/' + legend['image']) }}{% endif %}" class="img-fluid mb-3" alt="{{ legend['title'] }}">
-{% endif %}
-<p>{{ legend['content'] }}</p>
-<p><strong>Autor:</strong> {{ legend['author'] }}</p>
-<p><strong>Data:</strong> {{ legend['date'] }}</p>
-<a href="{{ url_for('excluir', id=legend['id']) }}" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">Excluir Lenda</a>
+    <h2>{{ legend['title'] }}</h2>
+
+    {% if legend['image'] %}
+        <img src="{% if legend['image'].startswith('http') %}
+            {{ legend['image'] }}
+        {% else %}
+            {{ url_for('static', filename='uploads/' + legend['image']) }}
+        {% endif %}"
+        class="img-fluid mb-3"
+        alt="{{ legend['title'] }}">
+    {% endif %}
+
+    <div class="lenda-detalhe">
+        {{ legend['content'] }}
+    </div>
+
+    <p><strong>Autor:</strong> {{ legend['author'] }}</p>
+    <p><strong>Data:</strong> {{ legend['date'] }}</p>
+
+    {% if session.get('usuario_id') %}
+        <a href="{{ url_for('excluir', id=legend['id']) }}"
+           class="btn btn-danger"
+           onclick="return confirm('Tem certeza que deseja excluir esta lenda?')">
+            Excluir Lenda
+        </a>
+    {% endif %}
+
 {% else %}
-<h2>Lenda Não Encontrada</h2>
-<p>A lenda solicitada não foi encontrada.</p>
+    <h2>Lenda Não Encontrada</h2>
+    <p>A lenda solicitada não foi encontrada.</p>
 {% endif %}
-<a href="{{ url_for('lendas') }}" class="btn btn-outline-secondary mt-3">Voltar às Lendas</a>
+
+<a href="{{ url_for('lendas') }}" class="btn btn-outline-secondary mt-3">
+    Voltar às Lendas
+</a>
 {% endblock %}

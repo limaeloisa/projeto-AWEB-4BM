@@ -3,48 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Histórias Que o Tempo Contou</title>
+    <title>Lendas Que o Tempo Contou</title>
+
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body class="d-flex flex-column min-vh-100">
-    <header class="bg-light text-dark p-3 border-bottom">
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark py-2"
+         style="background: linear-gradient(135deg, rgba(193,74,226,0.85), rgba(70,45,144,0.95));">
         <div class="container">
-            <h1 class="h4">Portal das Lendas Brasileiras</h1>
-<nav>
-    <a href="{{ url_for('index') }}" class="text-decoration-none me-3">Início</a>
-    <a href="{{ url_for('lendas') }}" class="text-decoration-none me-3">Lendas</a>
 
-    {% if session.get('usuario_id') %}
-        <a href="{{ url_for('adicionar') }}" class="text-decoration-none me-3">Adicionar Lenda</a>
-        <span class="me-2">Olá, {{ session['usuario_nome'] }}</span>
-        <a href="{{ url_for('logout') }}" class="text-decoration-none text-danger">Sair</a>
-    {% else %}
-        <a href="{{ url_for('login') }}" class="text-decoration-none me-3">Login</a>
-        <a href="{{ url_for('cadastro') }}" class="text-decoration-none">Cadastro</a>
-    {% endif %}
-</nav>
+            <!-- TÍTULO -->
+<a class="navbar-brand d-flex align-items-center gap-2 fw-semibold"
+   href="{{ url_for('index') }}">
+<img src="{{ url_for('static', filename='img/logo.png') }}"
+     alt="Logo"
+     class="logo-site">
 
+    <span>Lendas Que o Tempo Contou</span>
+</a>
+            <!-- BOTÃO MOBILE -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarLendas" aria-controls="navbarLendas"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- NAV -->
+            <div class="collapse navbar-collapse" id="navbarLendas">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('lendas') }}">Lendas</a>
+                    </li>
+                    <li class="nav-item"> 
+                        <a class="nav-link" href="{{ url_for('sobre') }}">Sobre</a>
+                    </li>
+                </ul>
+
+
+                <!-- AÇÕES -->
+                <div class="d-flex align-items-center gap-2">
+                    {% if session.get('usuario_id') %}
+                        <span class="text-white small me-2">
+                            Olá, {{ session['usuario_nome'] }}
+                        </span>
+
+                        <a href="{{ url_for('adicionar') }}" class="btn btn-purple btn-sm">
+                            Adicionar Lenda
+                        </a>
+
+                        <a href="{{ url_for('logout') }}" class="btn btn-outline-light btn-sm">
+                            Sair
+                        </a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="btn btn-purple btn-sm">
+                            Adicionar Lenda
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </header>
-    <main class="container my-4">
-        {% block content %}{% endblock %}
-    </main>
-    <footer class="bg-light text-muted p-3 text-center border-top mt-auto">
-        <p>&copy; 2026 Portal das Lendas Brasileiras. Todos os direitos reservados.</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </nav>
+</header>
 
-    <style>
-    .btn-purple {
-    background-color: #6f42c1;
+<!-- CONTEÚDO -->
+<main class="container my-4">
+    {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-light text-muted p-3 text-center border-top mt-auto">
+    <p>&copy; 2026 Blog com Lendas Brasileiras. Todos os direitos reservados.</p>
+</footer>
+
+<!-- JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<!-- ESTILOS EXTRAS -->
+<style>
+.btn-purple {
+    background: linear-gradient(135deg, #c14ae2, #462d90);
     border: none;
     color: white;
-    }
-    .btn-purple:hover {
-    background-color: #59339d;
-    }
+    border-radius: 20px;
+}
+
+.btn-purple:hover {
+    opacity: 0.9;
+}
 </style>
+
 </body>
 </html>

@@ -1,28 +1,55 @@
-
+/* ===== BASE ===== */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
-    background-image: url('/static/fundo.png');
+    background-image: url("/static/img/fundo.png");
     background-size: cover;
     background-attachment: fixed;
     color: #ffffff;
 }
 
-header {
-    background: linear-gradient(135deg, #c14ae29d, #462d90);
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
 }
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(
+        135deg,
+        rgba(193, 74, 226, 0.85),
+        rgba(70, 45, 144, 0.95)
+    );
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
 header nav a {
-    color: #ffffff; 
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 12px;
     font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
 }
 
 header nav a:hover {
-    color: #ffcc00; 
+    color: #ffcc00;
 }
+
+.logo-site {
+    height: 50px;
+    width: auto;
+}
+/* ===== CARDS ===== */
 .card {
     border: none;
     border-radius: 10px;
@@ -34,40 +61,35 @@ header nav a:hover {
     transform: translateY(-5px);
 }
 
+/* ===== BOTÕES ===== */
 .btn-outline-primary {
-    border-color: #306db2;
+    border-color: #4a90e2;
     color: #4a90e2;
 }
 
 .btn-outline-primary:hover {
     background-color: #4a90e2;
     border-color: #4a90e2;
+    color: #ffffff;
 }
 
-footer {
-    background: linear-gradient(135deg, #c14ae29d, #462d90);
-    color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.btn-hero {
+    background: linear-gradient(135deg, #c14ae2, #462d90);
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
 }
 
-.lenda-img {
-    width: 100%;
-    max-height: 380px;
-    object-fit: cover;
-    object-position: center 15%;
-    border-radius: 6px;
-    margin: 1.5rem 0;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
-    filter: grayscale(100%);
-    transition: all 0.4s ease;
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    color: #ffffff;
 }
 
-.lenda-img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.02);
-}
-
-/* HERO SECTION */
+/* ===== HERO ===== */
 .hero {
     min-height: calc(100vh - 120px);
     display: flex;
@@ -81,8 +103,9 @@ footer {
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        rgba(70, 45, 144, 0.7),
-        rgba(193, 74, 226, 0.6)
+        180deg,
+        rgba(70, 45, 144, 0.8),
+        rgba(193, 74, 226, 0.65)
     );
 }
 
@@ -104,19 +127,77 @@ footer {
     opacity: 0.95;
 }
 
-/* BOTÃO PRINCIPAL */
-.btn-hero {
-    background: linear-gradient(135deg, #c14ae2, #462d90);
-    color: #fff;
-    border: none;
-    padding: 0.75rem 2.5rem;
-    border-radius: 30px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
+/* ===== IMAGENS DAS LENDAS ===== */
+.lenda-img {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
 }
 
-.btn-hero:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    color: #fff;
+.lenda-img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.02);
 }
+
+/* ===== TEXTO DAS LENDAS ===== */
+.lenda-detalhe {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2.2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    line-height: 1.9;
+    font-size: 1.1rem;
+    margin: 2rem 0;
+}
+.lenda-detalhe p {
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+/* ===== CARDS DAS LENDAS ===== */
+.card-text {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    line-height: 1.7;
+
+}
+
+.card-text {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ===== SOBRE ===== */
+.sobre-box {
+    background: rgba(67, 17, 107, 0.459);
+    color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.sobre-box h2 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: linear-gradient(
+        135deg,
+        rgba(193, 74, 226, 0.85),
+        rgba(70, 45, 144, 0.95)
+    );
+    color: #ffffff;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.25);
+}
+ 
