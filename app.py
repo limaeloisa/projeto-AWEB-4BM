@@ -5,6 +5,7 @@ import mysql.connector
 app = Flask(__name__)
 app.secret_key = 'chave_simples'
 app.config['FOLDER_UPLOADS'] = os.path.join(app.root_path, 'static', 'uploads')
+
 def executar_sql(sql, params=None, um=False, todos=False):
     conexao = mysql.connector.connect(
         host='localhost',
@@ -49,7 +50,7 @@ def lendas():
                    author AS autor, date AS data_publicacao, image AS imagem
             FROM posts
             WHERE title LIKE %s
-            ORDER BY date DESC
+            ORDER BY `date` DESC
         """
         params = ('%' + termo + '%',)
         lendas_usuario = executar_sql(sql, params=params, todos=True)
@@ -59,7 +60,8 @@ def lendas():
             SELECT id, title AS titulo, content AS conteudo,
                    author AS autor, date AS data_publicacao, image AS imagem
             FROM posts
-            ORDER BY date DESC
+            ORDER BY `date` DESC
+
         """
         lendas_usuario = executar_sql(sql, todos=True)
 
