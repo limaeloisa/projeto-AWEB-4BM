@@ -22,3 +22,13 @@ CREATE TABLE usuarios (
 
 SELECT * FROM usuarios;
 SELECT * FROM posts;
+
+----------------------------------
+bootstrap navbar:
+https://getbootstrap.com/docs/5.0/components/navbar/
+
+bootstrap cards:
+https://getbootstrap.com/docs/5.0/components/card/
+
+bootstrap head:
+https://getbootstrap.com/docs/5.0/examples/
